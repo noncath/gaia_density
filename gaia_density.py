@@ -1665,6 +1665,8 @@ def mean(RA: float, DEC: float) -> float:
     RA and DEC must be in degrees, result will be returned in arcsec
     """
     if 0 <= RA <= 360 and -90 <= DEC <= 90:
+        if RA == 360 and (DEC == 90 or DEC == -90):
+            RA = 0 
         tri=_find_tri(RA,DEC)
         if tri:
             (_,_, _,_, _,_,_, _,_,_, _,_,_, kx,ky,z0, _,_,_)=tri
@@ -1678,6 +1680,8 @@ def median(RA: float, DEC: float) -> float:
     RA and DEC must be in degrees, result will be returned in arcsec
     """
     if 0 <= RA <= 360 and -90 <= DEC <= 90:
+        if RA == 360 and (DEC == 90 or DEC == -90):
+            RA = 0 
         tri=_find_tri(RA,DEC)
         if tri:
             (_,_, _,_, _,_,_, _,_,_, _,_,_, _,_,_, kx,ky,z0)=tri
